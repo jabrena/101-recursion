@@ -1,1 +1,6 @@
-# 101-recursion
+# 101 recursion
+
+```bash
+sdk env install
+./mvnw clean verify
+```
