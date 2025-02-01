@@ -1,4 +1,4 @@
-package info.jab.recursion;
+package info.jab.recursion.tail;
 
 /**
  * Example 4 : Fibonacci with Recursion

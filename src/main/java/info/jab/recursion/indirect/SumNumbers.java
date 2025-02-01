@@ -1,4 +1,4 @@
-package info.jab.recursion;
+package info.jab.recursion.indirect;
 
 import java.util.stream.IntStream;
 /**

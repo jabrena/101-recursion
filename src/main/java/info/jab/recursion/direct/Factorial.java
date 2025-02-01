@@ -1,4 +1,4 @@
-package info.jab.recursion;
+package info.jab.recursion.direct;
 
 import java.util.stream.LongStream;
 
@@ -8,8 +8,7 @@ import java.util.stream.LongStream;
 public class Factorial {
 
     public long factorial(int n) {
-        return LongStream.rangeClosed(1, n)
-                .reduce(1, (a, b) -> a * b);
+        return LongStream.rangeClosed(1, n).reduce(1, (a, b) -> a * b);
     }
 
     public long factorialRecursive(int n) {
@@ -21,5 +20,4 @@ public class Factorial {
         }
         return n * factorialRecursive(n - 1);
     }
-
 }

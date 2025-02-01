@@ -1,7 +1,10 @@
-package info.jab.recursion;
+package info.jab.recursion.indirect;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import info.jab.recursion.indirect.SumNumbers;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class SumNumbersTest {
