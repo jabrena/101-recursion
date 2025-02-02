@@ -1,3 +1,4 @@
 target/
 .vscode/
 .jqwik-database
+.DS_Store

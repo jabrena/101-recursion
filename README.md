@@ -4,6 +4,17 @@
 
 ## Concepts
 
+### Tail Call Optimization (TCO) 
+
+Tail Call Optimization (TCO) is a compiler optimization technique that converts recursive tail calls into iterative loops. A tail call occurs when a recursive call is the last operation in a function.
+
+Key benefits:
+- Prevents stack overflow by reusing stack frames
+- Improves memory usage and performance
+- Turns recursion into iteration under the hood
+
+**Note:** While Java doesn't support TCO natively, other JVM languages like Scala or Kotlin and functional programming languages do.
+
 ### Tail Recursion
 
 Tail recursion is a special type of recursion where the recursive call is the last operation performed in the function. In other words, there are no pending calculations after the recursive call.
@@ -17,6 +28,12 @@ Memoization is a technique used to optimize recursive functions by storing the r
 
 - [Fibonacci](./src/main/java/info/jab/recursion/Fibonacci.java)
 
+### Divide and Conquer
+
+Divide and Conquer is a recursive algorithmic strategy that breaks down a problem into smaller subproblems until they become simple enough to solve directly.
+
+- [Merge Sort](./src/main/java/info/jab/recursion/MergeSort.java)
+
 ## Utils
 
 - [TailCall](./src/main/java/info/jab/recursion/utils/TailCall.java)
@@ -28,11 +45,22 @@ Memoization is a technique used to optimize recursive functions by storing the r
 ```bash
 sdk env install
 ./mvnw clean verify
+./mvnw clean verify surefire-report:report
+
+./mvnw versions:display-dependency-updates
+./mvnw versions:display-plugin-updates
 ```
 
 ## References
 
-### Tail Recursion
+### Recursion in other JVM languages
+
+- https://clojuredocs.org/clojure.core/recur
+- https://www.scala-lang.org/api/3.1.2/scala/annotation/tailrec.html
+- https://kotlinlang.org/docs/functions.html#tail-recursion
+
+
+### Recursion
 
 - https://www.geeksforgeeks.org/recursion-practice-problems-solutions/
 - https://github.com/Birkbeck/sp3-example-code/tree/main/recursion/src/recursion
