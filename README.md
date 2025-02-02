@@ -1,5 +1,7 @@
 # 101 recursion
 
+![docs](./docs/recursion.jpg)
+
 ## Concepts
 
 ### Tail Recursion
