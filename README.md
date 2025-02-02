@@ -1,36 +1,16 @@
 # 101 recursion
 
-## Types of Recursion
-
-### Direct Recursion
-
-Direct recursion is called this way because the method calls itself "directly", without intermediaries.
-
-- [Factorial](src/test/java/info/jab/recursion/direct/FactorialBenchmark.java)
-
-### Indirect Recursion
-
-Indirect recursion is when a method calls another method, which in turn calls the original method.
-
-- [SumNumbers](src/test/java/info/jab/recursion/indirect/SumNumbersTest.java)
-
-### Tail Recursion
+## Tail Recursion
 
 Tail recursion is a special type of recursion where the recursive call is the last operation performed in the function. In other words, there are no pending calculations after the recursive call.
 
-- [Fibonacci](src/test/java/info/jab/recursion/tail/FibonaccyTest.java)
+- [Factorial](src/main/java/info/jab/recursion/Factorial.java)
 
-### Head Recursion
+## Memoization
 
-Head recursion occurs when the recursive call is made before any other operation is processed in the function. In other words, the first operation in the method is the recursive call.
+Memoization is a technique used to optimize recursive functions by storing the results of expensive function calls and reusing them when the same inputs occur again.
 
-- [CountDown](src/test/java/info/jab/recursion/head/CountDownTest.java)
-
----
-
-- Linear Recursion
-- Multiple Recursion
-- Nested Recursion
+- [Fibonacci](src/main/java/info/jab/recursion/Fibonacci.java)
 
 ## How to build in local
 
@@ -41,5 +21,5 @@ sdk env install
 
 ## References
 
-- https://www.javatpoint.com/different-types-of-recursions-in-java
 - https://www.geeksforgeeks.org/recursion-practice-problems-solutions/
+- https://github.com/Birkbeck/sp3-example-code/tree/main/recursion/src/recursion

@@ -1,6 +1,7 @@
-package info.jab.recursion.indirect;
+package info.jab.recursion;
 
 import java.util.stream.IntStream;
+
 /**
  * Example 1 : Sum of Natural Numbers from 1 to 100
  */
