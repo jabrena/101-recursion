@@ -7,6 +7,7 @@
 Tail recursion is a special type of recursion where the recursive call is the last operation performed in the function. In other words, there are no pending calculations after the recursive call.
 
 - [Factorial](./src/main/java/info/jab/recursion/Factorial.java)
+- [Primes](./src/main/java/info/jab/recursion/Primes.java)
 
 ### Memoization
 
