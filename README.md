@@ -38,9 +38,15 @@ sdk env install
 ### Functional Programming
 
 - https://github.com/vavr-io/vavr
+- https://medium.com/@johnmcclean/trampolining-a-practical-guide-for-awesome-java-developers-4b657d9c3076
 - https://github.com/aol/cyclops 
 - https://github.com/aol/cyclops/blob/master/cyclops/src/main/java/cyclops/control/Trampoline.java
 - https://github.com/fpinjava/fpinjava
 - https://github.com/fpinjava/fpinjava/blob/master/fpinjava-parent/fpinjava-common/src/main/java/com/fpinjava/common/TailCall.java
 - https://github.com/bodar/totallylazy
 - https://github.com/bodar/totallylazy/blob/master/src/com/googlecode/totallylazy/Trampoline.java
+
+### Property-Based Testing, PBT
+
+- https://jqwik.net/
+- https://github.com/jqwik-team
