@@ -1,4 +1,4 @@
-package info.jab.recursion.head;
+package info.jab.recursion;
 
 public class CountDown {
 
@@ -7,7 +7,7 @@ public class CountDown {
             return;
         }
         
-        // La llamada recursiva ocurre antes de procesar n
+        // The recursive call happens before processing n
         countDown(n - 1, result);
         result.append(n);
     }

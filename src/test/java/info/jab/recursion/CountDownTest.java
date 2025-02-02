@@ -1,9 +1,10 @@
-package info.jab.recursion.head;
+package info.jab.recursion;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CountDownTest {
+class CountDownTest {
     
     @Test
     void testCountDown() {
