@@ -14,7 +14,7 @@ Memoization is a technique used to optimize recursive functions by storing the r
 
 - [Fibonacci](./src/main/java/info/jab/recursion/Fibonacci.java)
 
-## Utils
+## Utils
 
 - [TailCall](./src/main/java/info/jab/recursion/utils/TailCall.java)
 - [TailCalls](./src/main/java/info/jab/recursion/utils/TailCalls.java)
