@@ -5,7 +5,12 @@ import java.util.HashMap;
 import java.util.function.Function;
 import java.util.function.BiFunction;
 
-public class Memoizer {
+public final class Memoizer {
+    
+    private Memoizer() {
+        throw new AssertionError("Utility class should not be instantiated");
+    }
+    
     public static <T, R> R callMemoized(final BiFunction<Function<T, R>, T, R> function, final T input) {
 
         Function<T, R> memoized = new Function<T, R>() {
