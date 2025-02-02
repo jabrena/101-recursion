@@ -4,6 +4,8 @@ import java.math.BigInteger;
 import java.util.stream.LongStream;
 
 import info.jab.recursion.utils.TailCall;
+import info.jab.recursion.utils.Trampoline;
+
 import static info.jab.recursion.utils.TailCalls.call;
 import static info.jab.recursion.utils.TailCalls.done;
 
@@ -44,5 +46,13 @@ public class Factorial {
             case 0, 1 -> done(factorial);
             default -> call(() -> factorialTailRec(factorial.multiply(BigInteger.valueOf(number)), number - 1));
         };
+    }
+
+    public BigInteger factorialTrampoline(int number) {
+        return factorialTrampolineInternal(BigInteger.valueOf(number), BigInteger.ONE).invoke();
+    }
+
+    public Trampoline<BigInteger> factorialTrampolineInternal(BigInteger n, BigInteger acc) {
+        return n.compareTo(BigInteger.ONE) == 0 ? Trampoline.completed(acc) : () -> factorialTrampolineInternal(n.subtract(BigInteger.ONE), acc.multiply(n));
     }
 }
