@@ -46,6 +46,7 @@ Divide and Conquer is a recursive algorithmic strategy that breaks down a proble
 sdk env install
 ./mvnw clean verify
 ./mvnw clean verify surefire-report:report
+./mvnw clean verify jacoco:report
 
 ./mvnw versions:display-dependency-updates
 ./mvnw versions:display-plugin-updates
