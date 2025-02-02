@@ -17,6 +17,7 @@ Memoization is a technique used to optimize recursive functions by storing the r
 ## Utils
 
 - [TailCall](./src/main/java/info/jab/recursion/utils/TailCall.java)
+- [TailCalls](./src/main/java/info/jab/recursion/utils/TailCalls.java)
 - [Memoizer](./src/main/java/info/jab/recursion/utils/Memoizer.java)
 
 ## How to build in local
