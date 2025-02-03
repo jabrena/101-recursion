@@ -49,10 +49,11 @@ class FactorialTest {
 
     @Test
     void shouldGetSameResultForAllApproachesWithFactorial10() {
-        BigInteger functionalResult = factorial.factorial(10);
-        BigInteger recursiveResult = factorial.factorialRecursive(10);
-        BigInteger trampolineResult = factorial.factorialRecursiveTrampoline(10);
-        BigInteger forkJoinResult = factorial.factorialRecursiveForkJoin(10);
+        final int number = 10;
+        BigInteger functionalResult = factorial.factorial(number);
+        BigInteger recursiveResult = factorial.factorialRecursive(number);
+        BigInteger trampolineResult = factorial.factorialRecursiveTrampoline(number);
+        BigInteger forkJoinResult = factorial.factorialRecursiveForkJoin(number);
 
         assertThat(functionalResult)
             .isEqualTo(recursiveResult)

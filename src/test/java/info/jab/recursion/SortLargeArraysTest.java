@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import info.jab.recursion.concurrent.ConcurrentMergeSort;
+import net.jqwik.api.Disabled;
+
 public class SortLargeArraysTest {
 
     private static final int ARRAY_SIZE = 50_000;
@@ -51,4 +54,17 @@ public class SortLargeArraysTest {
         int[] result = bubbleSort.sortRecursive(input, input.length);
         assertArrayEquals(expectedResult, result);
     }
+
+    // *** java.lang.instrument ASSERTION FAILED ***: 
+    //"!errorOutstanding" with message can't create name string at 
+    // src/java.instrument/share/native/libinstrument/JPLISAgent.c line: 838
+    /*
+    @Disabled
+    @Test
+    void concurrentMergeSortLargeArraysTest() throws InterruptedException {
+        ConcurrentMergeSort concurrentMergeSort = new ConcurrentMergeSort();
+        int[] result = concurrentMergeSort.sort(input, 0, input.length - 1);
+        assertArrayEquals(expectedResult, result);
+    }
+    */
 }
