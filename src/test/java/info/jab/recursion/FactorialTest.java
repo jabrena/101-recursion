@@ -15,7 +15,7 @@ class FactorialTest {
     private final Factorial factorial = new Factorial();
 
     @Property
-    void shouldReturnLongValueForNonNegativeInputs(@ForAll @IntRange(min = 0, max = 10) int n) {
+    void shouldWorkWithFunctionalApproach(@ForAll @IntRange(min = 0, max = 10) int n) {
         BigInteger result = factorial.factorial(n);
         assertThat(result)
             .isInstanceOf(BigInteger.class)
@@ -23,7 +23,7 @@ class FactorialTest {
     }
 
     @Property
-    void shouldReturnLongValueForNonNegativeInputs2(@ForAll @IntRange(min = 0, max = 10) int n) {
+    void shouldWorkWithRecursiveApproach(@ForAll @IntRange(min = 0, max = 10) int n) {
         BigInteger result = factorial.factorialRecursive(n);
         assertThat(result)
             .isInstanceOf(BigInteger.class)
@@ -31,19 +31,33 @@ class FactorialTest {
     }
 
     @Property
-    void shouldReturnLongValueForNonNegativeInputs3(@ForAll @IntRange(min = 0, max = 10) int n) {
+    void shouldWorkWithTrampolineApproach(@ForAll @IntRange(min = 0, max = 10) int n) {
         BigInteger result = factorial.factorialRecursiveTrampoline(n);
         assertThat(result)
             .isInstanceOf(BigInteger.class)
             .isPositive();
     }
 
+
     @Property
-    void shouldReturnLongValueForNonNegativeInputs4(@ForAll @IntRange(min = 0, max = 10) int n) {
-        BigInteger result = factorial.factorial(n);
+    void shouldWorkWithForkJoinApproach(@ForAll @IntRange(min = 0, max = 10) int n) {
+        BigInteger result = factorial.factorialRecursiveForkJoin(n);
         assertThat(result)
             .isInstanceOf(BigInteger.class)
             .isPositive();
+    }
+
+    @Test
+    void shouldGetSameResultForAllApproachesWithFactorial10() {
+        BigInteger functionalResult = factorial.factorial(10);
+        BigInteger recursiveResult = factorial.factorialRecursive(10);
+        BigInteger trampolineResult = factorial.factorialRecursiveTrampoline(10);
+        BigInteger forkJoinResult = factorial.factorialRecursiveForkJoin(10);
+
+        assertThat(functionalResult)
+            .isEqualTo(recursiveResult)
+            .isEqualTo(trampolineResult)
+            .isEqualTo(forkJoinResult);
     }
 
     @Test
