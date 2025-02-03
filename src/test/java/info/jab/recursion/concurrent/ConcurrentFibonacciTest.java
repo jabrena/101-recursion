@@ -1,6 +1,7 @@
-package info.jab.recursion;
+package info.jab.recursion.concurrent;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.List;
 import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,14 +16,13 @@ class ConcurrentFibonacciTest {
         
         // When
         List<Long> results = calculator.calculateRange(0, 10);
-        
+        calculator.shutdown();
+
         // Then
         assertThat(results)
             .as("La secuencia de Fibonacci")
             .hasSize(expectedFibonacci.length)
             .containsExactly(Arrays.stream(expectedFibonacci).boxed().toArray(Long[]::new));
-        
-        calculator.shutdown(); // Cerrar el executor cuando ya no se necesite
     }
 
 } 

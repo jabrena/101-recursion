@@ -1,9 +1,12 @@
 package info.jab.recursion;
 
 import java.math.BigInteger;
+import java.util.concurrent.ForkJoinPool;
 import java.util.stream.LongStream;
 
 import info.jab.recursion.utils.Trampoline;
+
+import info.jab.recursion.concurrent.FactorialTask;
 
 /**
  * Example 2 : Factorial of a Number
@@ -45,5 +48,16 @@ public class Factorial {
         }
         return Trampoline.more(() -> 
             factorialTailRec(factorial.multiply(BigInteger.valueOf(number)), number - 1));
+    }
+
+    public BigInteger factorialRecursiveForkJoin(int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("Factorial is not defined for negative numbers");
+        }
+
+        ForkJoinPool forkJoinPool = new ForkJoinPool();
+        var result = forkJoinPool.invoke(new FactorialTask(number));
+        forkJoinPool.shutdown();
+        return result;
     }
 }

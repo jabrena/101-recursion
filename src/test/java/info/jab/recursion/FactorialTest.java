@@ -15,7 +15,7 @@ class FactorialTest {
     private final Factorial factorial = new Factorial();
 
     @Property
-    void shouldReturnLongValueForNonNegativeInputs(@ForAll @IntRange(min = 0, max = 10) int n) {
+    void shouldWorkWithFunctionalApproach(@ForAll @IntRange(min = 0, max = 10) int n) {
         BigInteger result = factorial.factorial(n);
         assertThat(result)
             .isInstanceOf(BigInteger.class)
@@ -23,7 +23,7 @@ class FactorialTest {
     }
 
     @Property
-    void shouldReturnLongValueForNonNegativeInputs2(@ForAll @IntRange(min = 0, max = 10) int n) {
+    void shouldWorkWithRecursiveApproach(@ForAll @IntRange(min = 0, max = 10) int n) {
         BigInteger result = factorial.factorialRecursive(n);
         assertThat(result)
             .isInstanceOf(BigInteger.class)
@@ -31,19 +31,34 @@ class FactorialTest {
     }
 
     @Property
-    void shouldReturnLongValueForNonNegativeInputs3(@ForAll @IntRange(min = 0, max = 10) int n) {
+    void shouldWorkWithTrampolineApproach(@ForAll @IntRange(min = 0, max = 10) int n) {
         BigInteger result = factorial.factorialRecursiveTrampoline(n);
         assertThat(result)
             .isInstanceOf(BigInteger.class)
             .isPositive();
     }
 
+
     @Property
-    void shouldReturnLongValueForNonNegativeInputs4(@ForAll @IntRange(min = 0, max = 10) int n) {
-        BigInteger result = factorial.factorial(n);
+    void shouldWorkWithForkJoinApproach(@ForAll @IntRange(min = 0, max = 10) int n) {
+        BigInteger result = factorial.factorialRecursiveForkJoin(n);
         assertThat(result)
             .isInstanceOf(BigInteger.class)
             .isPositive();
+    }
+
+    @Test
+    void shouldGetSameResultForAllApproachesWithFactorial10() {
+        final int number = 10;
+        BigInteger functionalResult = factorial.factorial(number);
+        BigInteger recursiveResult = factorial.factorialRecursive(number);
+        BigInteger trampolineResult = factorial.factorialRecursiveTrampoline(number);
+        BigInteger forkJoinResult = factorial.factorialRecursiveForkJoin(number);
+
+        assertThat(functionalResult)
+            .isEqualTo(recursiveResult)
+            .isEqualTo(trampolineResult)
+            .isEqualTo(forkJoinResult);
     }
 
     @Test
@@ -62,7 +77,8 @@ class FactorialTest {
 
     @Test
     void shouldThrowStackOverflowErrorForLargeNumbersTrampoline() {
-        factorial.factorialRecursiveTrampoline(100_000);
+        var result = factorial.factorialRecursiveTrampoline(100_000);
+        assertThat(result).isInstanceOf(BigInteger.class);
     }
 
 } 

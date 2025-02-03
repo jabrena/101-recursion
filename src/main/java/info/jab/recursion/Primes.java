@@ -1,5 +1,9 @@
 package info.jab.recursion;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.StructuredTaskScope;
+import java.util.concurrent.StructuredTaskScope.Subtask;
+
 public class Primes {
     
     public boolean isPrime(int n) {
@@ -12,6 +16,12 @@ public class Primes {
         return true;
     }
 
+    // Indirect recursion
+    public boolean isPrimeRecursive(int n) {
+        if (n == 2) return true; // Special case: 2 is prime
+        return isPrimeTailRec(n, 2); // Start checking from 2
+    }
+
     private boolean isPrimeTailRec(int n, int divisor) {
         // Base cases
         if (n < 2) return false; // Numbers less than 2 are not prime
@@ -22,9 +32,28 @@ public class Primes {
         return isPrimeTailRec(n, divisor + 1);
     }
 
-    // Indirect recursion
-    public boolean isPrimeRecursive(int n) {
-        if (n == 2) return true; // Special case: 2 is prime
-        return isPrimeTailRec(n, 2); // Start checking from 2
+    public boolean isPrimeConcurrent(int n) throws InterruptedException, ExecutionException {
+        if (n < 2) return false;
+        if (n == 2) return true;
+        
+        int sqrtN = (int) Math.sqrt(n);
+        return isPrimeRecursiveConcurrent(n, 2, sqrtN);
+    }
+    
+    private boolean isPrimeRecursiveConcurrent(int n, int start, int end) throws InterruptedException, ExecutionException {        
+        System.out.println("Thread: " + Thread.currentThread() + " - Checking range: " + start + " to " + end);
+        
+        int mid = start + (end - start) / 2;
+        
+        try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+            Subtask<Boolean> leftTask = scope.fork(() -> 
+                isPrimeRecursiveConcurrent(n, start, mid));
+                
+            Subtask<Boolean> rightTask = scope.fork(() -> 
+                isPrimeRecursiveConcurrent(n, mid + 1, end));
+            
+            scope.join().throwIfFailed();
+            return leftTask.get() && rightTask.get();
+        }
     }
 }

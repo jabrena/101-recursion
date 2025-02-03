@@ -1,4 +1,4 @@
-package info.jab.recursion;
+package info.jab.recursion.concurrent;
 
 import java.util.ArrayList;
 import java.util.List;
