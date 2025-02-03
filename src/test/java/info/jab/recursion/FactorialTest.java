@@ -62,7 +62,8 @@ class FactorialTest {
 
     @Test
     void shouldThrowStackOverflowErrorForLargeNumbersTrampoline() {
-        factorial.factorialRecursiveTrampoline(100_000);
+        var result = factorial.factorialRecursiveTrampoline(100_000);
+        assertThat(result).isInstanceOf(BigInteger.class);
     }
 
 } 

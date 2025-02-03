@@ -51,5 +51,4 @@ public class SortLargeArraysTest {
         int[] result = bubbleSort.sortRecursive(input, input.length);
         assertArrayEquals(expectedResult, result);
     }
-    
 }
