@@ -10,9 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.math.BigInteger;
 
-class FibonaccyTest {
+class FibonacciTest {
 
-    private final Fibonaccy fibonacci = new Fibonaccy();
+    private final Fibonacci fibonacci = new Fibonacci();
 
     @ParameterizedTest
     @DisplayName("Should correctly calculate the first Fibonacci numbers")

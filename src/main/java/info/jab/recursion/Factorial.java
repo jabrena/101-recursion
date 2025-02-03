@@ -3,9 +3,7 @@ package info.jab.recursion;
 import java.math.BigInteger;
 import java.util.stream.LongStream;
 
-import info.jab.recursion.utils.TailCall;
-import static info.jab.recursion.utils.TailCalls.call;
-import static info.jab.recursion.utils.TailCalls.done;
+import info.jab.recursion.utils.Trampoline;
 
 /**
  * Example 2 : Factorial of a Number
@@ -22,7 +20,7 @@ public class Factorial {
                 .reduce(BigInteger.ONE, BigInteger::multiply);
     }
 
-    // Recursive approach
+    // Recursive approach without TCO
     public BigInteger factorialRecursive(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Factorial is not defined for negative numbers");
@@ -33,16 +31,19 @@ public class Factorial {
         return BigInteger.valueOf(n).multiply(factorialRecursive(n - 1));
     }
 
-    // Tail recursion approach
+    // Tail recursion approach with Trampoline
     public BigInteger factorialRecursiveTrampoline(int number) {
-        return factorialTailRec(BigInteger.ONE, number).invoke();
+        if (number < 0) {
+            throw new IllegalArgumentException("Factorial is not defined for negative numbers");
+        }
+        return factorialTailRec(BigInteger.ONE, number).get();
     }
 
-    public TailCall<BigInteger> factorialTailRec(BigInteger factorial, final int number) {
-        return switch (number) {
-            case Integer n when n < 0 -> throw new IllegalArgumentException("Factorial is not defined for negative numbers");
-            case 0, 1 -> done(factorial);
-            default -> call(() -> factorialTailRec(factorial.multiply(BigInteger.valueOf(number)), number - 1));
-        };
+    private Trampoline<BigInteger> factorialTailRec(BigInteger factorial, final int number) {
+        if (number <= 1) {
+            return Trampoline.done(factorial);
+        }
+        return Trampoline.more(() -> 
+            factorialTailRec(factorial.multiply(BigInteger.valueOf(number)), number - 1));
     }
 }

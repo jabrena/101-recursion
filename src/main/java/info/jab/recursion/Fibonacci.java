@@ -4,9 +4,7 @@ import java.math.BigInteger;
 import java.util.stream.Stream;
 
 import info.jab.recursion.utils.Memoizer;
-import info.jab.recursion.utils.TailCall;
-import static info.jab.recursion.utils.TailCalls.call;
-import static info.jab.recursion.utils.TailCalls.done;
+import info.jab.recursion.utils.Trampoline;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -14,7 +12,7 @@ import java.util.HashMap;
 /**
  * Example 4 : Fibonacci with Recursion
  */
-public class Fibonaccy {
+public class Fibonacci {
 
     public BigInteger fibonacci(int n) {
         if (n < 0) {
@@ -54,14 +52,14 @@ public class Fibonaccy {
 
     public BigInteger fibonacciTailCall(final int n) {
         return Memoizer.callMemoized((fib, num) -> {
-            return fib(num, BigInteger.ZERO, BigInteger.ONE).invoke();
+            return fib(num, BigInteger.ZERO, BigInteger.ONE).get();
         }, n);
     }
 
-    private TailCall<BigInteger> fib(final int n, final BigInteger acc1, final BigInteger acc2) {
+    private Trampoline<BigInteger> fib(final int n, final BigInteger acc1, final BigInteger acc2) {
         return switch (n) {
-            case 0 -> done(acc1);
-            default -> call(() -> fib(n - 1, acc2, acc1.add(acc2)));
+            case 0 -> Trampoline.done(acc1);
+            default -> Trampoline.more(() -> fib(n - 1, acc2, acc1.add(acc2)));
         };
     }
 }

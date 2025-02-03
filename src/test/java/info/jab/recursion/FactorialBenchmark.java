@@ -16,7 +16,7 @@ public class FactorialBenchmark {
 
     @Benchmark
     public BigInteger testRecursiveFactorial() {
-        return new Factorial().factorialRecursive(NUMBER);
+        return new Factorial().factorialRecursiveTrampoline(NUMBER);
     }
 
     public static void main(String[] ignored) throws RunnerException {
