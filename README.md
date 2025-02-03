@@ -2,7 +2,9 @@
 
 ![docs](./docs/recursion.jpg)
 
-## Concepts
+## What problem does the repository review?
+
+The repository review a collection of examples of recursion in Java. It is a way to learn about recursion and how to implement it in Java.
 
 ### Tail Call Optimization (TCO) 
 
@@ -14,6 +16,8 @@ Key benefits:
 - Turns recursion into iteration under the hood
 
 **Note:** While Java doesn't support TCO natively, other JVM languages like Scala or Kotlin and functional programming languages do.
+
+## Concepts
 
 ### Tail Recursion
 
@@ -36,8 +40,7 @@ Divide and Conquer is a recursive algorithmic strategy that breaks down a proble
 
 ## Utils
 
-- [TailCall](./src/main/java/info/jab/recursion/utils/TailCall.java)
-- [TailCalls](./src/main/java/info/jab/recursion/utils/TailCalls.java)
+- [Trampoline](./src/main/java/info/jab/recursion/utils/Trampoline.java)
 - [Memoizer](./src/main/java/info/jab/recursion/utils/Memoizer.java)
 
 ## How to build in local
@@ -60,15 +63,10 @@ sdk env install
 - https://www.scala-lang.org/api/3.1.2/scala/annotation/tailrec.html
 - https://kotlinlang.org/docs/functions.html#tail-recursion
 
-
-### Recursion
+### Recursion in Java
 
 - https://www.geeksforgeeks.org/recursion-practice-problems-solutions/
 - https://github.com/Birkbeck/sp3-example-code/tree/main/recursion/src/recursion
-
-### Functional Programming
-
-- https://github.com/vavr-io/vavr
 - https://medium.com/@johnmcclean/trampolining-a-practical-guide-for-awesome-java-developers-4b657d9c3076
 - https://github.com/aol/cyclops 
 - https://github.com/aol/cyclops/blob/master/cyclops/src/main/java/cyclops/control/Trampoline.java

@@ -12,12 +12,6 @@ public class Primes {
         return true;
     }
 
-    // Indirect recursion
-    public boolean isPrimeRecursive(int n) {
-        if (n == 2) return true; // Special case: 2 is prime
-        return isPrimeTailRec(n, 2); // Start checking from 2
-    }
-
     private boolean isPrimeTailRec(int n, int divisor) {
         // Base cases
         if (n < 2) return false; // Numbers less than 2 are not prime
@@ -26,5 +20,11 @@ public class Primes {
         
         // Recursive call with next divisor
         return isPrimeTailRec(n, divisor + 1);
+    }
+
+    // Indirect recursion
+    public boolean isPrimeRecursive(int n) {
+        if (n == 2) return true; // Special case: 2 is prime
+        return isPrimeTailRec(n, 2); // Start checking from 2
     }
 }

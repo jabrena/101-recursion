@@ -1,63 +1,61 @@
 package info.jab.recursion;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import java.util.stream.Stream;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class BubbleSortTest {
 
-    @Test
-    public void testBubbleSort() {
-        // Arrange
-        BubbleSort bubbleSort = new BubbleSort();
-        int[] input = {5, 1, 4, 2, 8};
-        int[] expected = {1, 2, 4, 5, 8};
-
-        // Act
-        bubbleSort.sort(input, input.length);
-
-        // Assert
-        assertArrayEquals(expected, input);
+    private static Stream<Arguments> provideArraysForSorting() {
+        return Stream.of(
+            Arguments.of(
+                new int[]{5, 1, 4, 2, 8},
+                new int[]{1, 2, 4, 5, 8},
+                "Regular array"
+            ),
+            Arguments.of(
+                new int[]{},
+                new int[]{},
+                "Empty array"
+            ),
+            Arguments.of(
+                new int[]{1},
+                new int[]{1},
+                "Single element"
+            ),
+            Arguments.of(
+                new int[]{3, 1, 3, 2, 3},
+                new int[]{1, 2, 3, 3, 3},
+                "Duplicate elements"
+            )
+        );
     }
 
-    @Test
-    public void testEmptyArray() {
-        // Arrange
+    @ParameterizedTest(name = "{2} Imperative")
+    @MethodSource("provideArraysForSorting")
+    public void shouldSortArray(int[] input, int[] expected, String testCase) {
+        // Given
         BubbleSort bubbleSort = new BubbleSort();
-        int[] input = {};
-        int[] expected = {};
 
-        // Act
-        bubbleSort.sort(input, input.length);
+        // When
+        var result = bubbleSort.sort(input, input.length);
 
-        // Assert
-        assertArrayEquals(expected, input);
+        // Then
+        assertArrayEquals(expected, result);
     }
 
-    @Test
-    public void testSingleElement() {
-        // Arrange
+    @ParameterizedTest(name = "{2} Recursive")
+    @MethodSource("provideArraysForSorting")
+    public void shouldSortArray2(int[] input, int[] expected, String testCase) {
+        // Given
         BubbleSort bubbleSort = new BubbleSort();
-        int[] input = {1};
-        int[] expected = {1};
 
-        // Act
-        bubbleSort.sort(input, input.length);
+        // When
+        var result = bubbleSort.sortRecursive(input, input.length);
 
-        // Assert
-        assertArrayEquals(expected, input);
-    }
-
-    @Test
-    public void testDuplicateElements() {
-        // Arrange
-        BubbleSort bubbleSort = new BubbleSort();
-        int[] input = {3, 1, 3, 2, 3};
-        int[] expected = {1, 2, 3, 3, 3};
-
-        // Act
-        bubbleSort.sort(input, input.length);
-
-        // Assert
-        assertArrayEquals(expected, input);
+        // Then
+        assertArrayEquals(expected, result);
     }
 } 
