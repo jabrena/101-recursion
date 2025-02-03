@@ -3,9 +3,6 @@ package info.jab.recursion;
 import java.math.BigInteger;
 import java.util.stream.LongStream;
 
-import info.jab.recursion.utils.TailCall;
-import static info.jab.recursion.utils.TailCalls.call;
-import static info.jab.recursion.utils.TailCalls.done;
 import info.jab.recursion.utils.Trampoline;
 
 /**
