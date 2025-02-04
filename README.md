@@ -2,15 +2,33 @@
 
 ![docs](./docs/recursion.jpg)
 
-## What problem does the repository review?
+The repository review Recursion in the context of Java programming language.
 
-The repository review a collection of examples of recursion in Java. It is a way to learn about recursion and how to implement it in Java.
+## What is recursion?
 
-### Tail Call Optimization (TCO) 
+Recursion is a programming technique where a function calls itself to solve a problem. It is a way to solve problems by breaking them down into smaller, more manageable parts.
+
+In Java you could process a list using a loop or use a recursive function.
+
+![recursion](./docs/recursion2.png)
+
+In the repository you will find examples of recursion in Java.
+
+- [x] Simple Java recursion
+- [x] Tail Call Optimization (TCO) 
+- [x] Memoization
+- [x] Divide and Conquer
+- [x] Emulate recursion with Java stream API
+- [x] Show stack trace
+
+---
+
+### What is Tail Call Optimization (TCO)?
 
 Tail Call Optimization (TCO) is a compiler optimization technique that converts recursive tail calls into iterative loops. A tail call occurs when a recursive call is the last operation in a function.
 
-Key benefits:
+what is the key benefits of TCO?
+
 - Prevents stack overflow by reusing stack frames
 - Improves memory usage and performance
 - Turns recursion into iteration under the hood
@@ -19,7 +37,7 @@ Key benefits:
 
 > In JDK classes [...] there are a number of security sensitive methods that rely on counting stack frames between JDK library code and calling code to figure out who's calling them.
 
-https://stackoverflow.com/questions/53354898/tail-call-optimisation-in-java#53354956:~:text=to%20know%20the-,reason,-which%20is%3A
+Sournce: https://stackoverflow.com/questions/53354898/tail-call-optimisation-in-java#53354956:~:text=to%20know%20the-,reason,-which%20is%3A
 
 ## Concepts
 
