@@ -17,6 +17,10 @@ Key benefits:
 
 **Note:** While Java doesn't support TCO natively, other JVM languages like Scala or Kotlin and functional programming languages do.
 
+> In JDK classes [...] there are a number of security sensitive methods that rely on counting stack frames between JDK library code and calling code to figure out who's calling them.
+
+https://stackoverflow.com/questions/53354898/tail-call-optimisation-in-java#53354956:~:text=to%20know%20the-,reason,-which%20is%3A
+
 ## Concepts
 
 ### Tail Recursion
@@ -57,23 +61,19 @@ sdk env install
 
 ## References
 
-### Recursion in other JVM languages
-
-- https://clojuredocs.org/clojure.core/recur
-- https://www.scala-lang.org/api/3.1.2/scala/annotation/tailrec.html
-- https://kotlinlang.org/docs/functions.html#tail-recursion
-
 ### Recursion in Java
 
 - https://www.geeksforgeeks.org/recursion-practice-problems-solutions/
-- https://github.com/Birkbeck/sp3-example-code/tree/main/recursion/src/recursion
 - https://medium.com/@johnmcclean/trampolining-a-practical-guide-for-awesome-java-developers-4b657d9c3076
 - https://github.com/aol/cyclops 
-- https://github.com/aol/cyclops/blob/master/cyclops/src/main/java/cyclops/control/Trampoline.java
-- https://github.com/fpinjava/fpinjava
-- https://github.com/fpinjava/fpinjava/blob/master/fpinjava-parent/fpinjava-common/src/main/java/com/fpinjava/common/TailCall.java
 - https://github.com/bodar/totallylazy
-- https://github.com/bodar/totallylazy/blob/master/src/com/googlecode/totallylazy/Trampoline.java
+
+### Recursion in other programming languages
+
+- Clojure: https://clojuredocs.org/clojure.core/recur
+- Scala:   https://www.scala-lang.org/api/3.1.2/scala/annotation/tailrec.html
+- Kotlin:  https://kotlinlang.org/docs/functions.html#tail-recursion
+- Elixir:  https://hexdocs.pm/elixir/main/recursion.html
 
 ### Property-Based Testing, PBT
 
