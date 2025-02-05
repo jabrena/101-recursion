@@ -31,7 +31,6 @@ public class Factorial {
         if (n <= 1) {
             return BigInteger.ONE;
         }
-        ShowStackTrace.printStack();
         return BigInteger.valueOf(n).multiply(factorialRecursive(n - 1));
     }
 
@@ -40,7 +39,6 @@ public class Factorial {
         if (number < 0) {
             throw new IllegalArgumentException("Factorial is not defined for negative numbers");
         }
-        ShowStackTrace.printStack();
         return factorialTailRec(BigInteger.ONE, number).get();
     }
 
@@ -48,7 +46,6 @@ public class Factorial {
         if (number <= 1) {
             return Trampoline.done(factorial);
         }
-        ShowStackTrace.printStack();
         return Trampoline.more(() -> 
             factorialTailRec(factorial.multiply(BigInteger.valueOf(number)), number - 1));
     }

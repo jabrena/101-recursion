@@ -68,7 +68,7 @@ Divide and Conquer is a recursive algorithmic strategy that breaks down a proble
 ```bash
 sdk env install
 ./mvnw clean verify
-./mvnw clean test -Dtest=FactorialTest
+./mvnw clean test -Dtest=InfiniteRecursionTest
 ./mvnw clean verify surefire-report:report
 ./mvnw clean verify jacoco:report
 
