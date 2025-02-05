@@ -17,7 +17,7 @@ In the repository you will find examples of recursion in Java.
 - [x] Memoization
 - [x] Divide and Conquer
 - [x] Emulate recursion with Java stream API
-- [x] Show stack trace
+- [x] Detect issues with Stacktraces
 
 ---
 
@@ -33,9 +33,9 @@ what is the key benefits of TCO?
 
 **Note:** While Java doesn't support TCO natively, other JVM languages like Scala or Kotlin and functional programming languages do.
 
-> In JDK classes [...] there are a number of security sensitive methods that rely on counting stack frames between JDK library code and calling code to figure out who's calling them.
+> In JDK classes there are a number of security sensitive methods that rely on counting stack frames between JDK library code and calling code to figure out who's calling them.
 
-Sournce: https://stackoverflow.com/questions/53354898/tail-call-optimisation-in-java#53354956:~:text=to%20know%20the-,reason,-which%20is%3A
+**Source:** https://stackoverflow.com/questions/53354898/tail-call-optimisation-in-java#53354956
 
 ## Concepts
 
@@ -68,6 +68,7 @@ Divide and Conquer is a recursive algorithmic strategy that breaks down a proble
 ```bash
 sdk env install
 ./mvnw clean verify
+./mvnw clean test -Dtest=FactorialTest
 ./mvnw clean verify surefire-report:report
 ./mvnw clean verify jacoco:report
 

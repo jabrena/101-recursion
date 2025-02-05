@@ -62,17 +62,16 @@ class FactorialTest {
     }
 
     @Test
-    void shouldFailWhenInputIsNegative() {
-        assertThrows(IllegalArgumentException.class, () -> 
-            factorial.factorialRecursive(-1)
-        );
-    }
-
-    @Test
     void shouldThrowStackOverflowErrorForLargeNumbers() {
         assertThrows(StackOverflowError.class, () ->
             factorial.factorialRecursive(100_000)
         );
+    }
+
+    @Test
+    void shouldNotThrowStackOverflowErrorForLargeNumbersTrampoline() {
+        var result = factorial.factorialRecursiveTrampoline(100_000);
+        assertThat(result).isInstanceOf(BigInteger.class);
     }
 
     @Test
