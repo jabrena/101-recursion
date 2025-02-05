@@ -8,8 +8,6 @@ The repository review Recursion in the context of Java programming language.
 
 Recursion is a programming technique where a function calls itself to solve a problem. It is a way to solve problems by breaking them down into smaller, more manageable parts.
 
-In Java you could process a list using a loop or use a recursive function.
-
 ![recursion](./docs/recursion2.png)
 
 In the repository you will find examples of recursion in Java.
